@@ -31,6 +31,10 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://sportflow-g1j3y.faable.link',
+]
+
 
 # Application definition
 
