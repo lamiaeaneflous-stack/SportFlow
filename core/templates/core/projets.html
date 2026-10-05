@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projets sportifs | SportFlow</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b09;
+            color: white;
+        }
+
+        nav {
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            background: #111512;
+
+            border-bottom: 1px solid #292f2a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8bdc28;
+        }
+
+        .back {
+            color: #8bdc28;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .container {
+            padding: 55px 7%;
+        }
+
+        .title {
+            margin-bottom: 35px;
+        }
+
+        .title p {
+            color: #8bdc28;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .title h1 {
+            font-size: 35px;
+            margin-top: 10px;
+        }
+
+        .title span {
+            color: #8bdc28;
+        }
+
+        .projets {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .projet {
+            background: #151916;
+            border: 1px solid #292f2a;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .projet:hover {
+            border-color: #8bdc28;
+        }
+
+        .projet h2 {
+            margin-bottom: 15px;
+            color: #8bdc28;
+        }
+
+        .projet p {
+            color: #aaa;
+            font-size: 13px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        @media(max-width: 800px) {
+
+            .projets {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .projets {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            ⚽ Sport<span>Flow</span>
+        </div>
+
+        <a href="{% url 'homa' %}" class="back">
+            ← Accueil
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+        <div class="title">
+
+            <p>SPORTFLOW</p>
+
+            <h1>
+                Projets <span>sportifs</span>
+            </h1>
+
+        </div>
+
+
+        <div class="projets">
+
+            {% for projet in projets %}
+
+                <div class="projet">
+
+                    <h2>
+                        {{ projet.nom }}
+                    </h2>
+
+                    <p>
+                        Sport : {{ projet.sport }}
+                    </p>
+
+                    <p>
+                        {{ projet.description }}
+                    </p>
+
+                    <p>
+                        Du {{ projet.date_debut }}
+                        au {{ projet.date_fin }}
+                    </p>
+
+                </div>
+
+            {% empty %}
+
+                <p>
+                    Aucun projet sportif disponible pour le moment.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Réservations | SportFlow</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b09;
+            color: white;
+        }
+
+        nav {
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            background: #111512;
+
+            border-bottom: 1px solid #292f2a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8bdc28;
+        }
+
+        .back {
+            color: #8bdc28;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .container {
+            padding: 55px 7%;
+        }
+
+        .title {
+            margin-bottom: 35px;
+        }
+
+        .title p {
+            color: #8bdc28;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .title h1 {
+            font-size: 35px;
+            margin-top: 10px;
+        }
+
+        .title span {
+            color: #8bdc28;
+        }
+
+        .reservations {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .reservation {
+            background: #151916;
+            border: 1px solid #292f2a;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .reservation:hover {
+            border-color: #8bdc28;
+        }
+
+        .reservation h2 {
+            color: #8bdc28;
+            margin-bottom: 15px;
+        }
+
+        .reservation p {
+            color: #aaa;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            color: #8bdc28 !important;
+            margin-top: 15px;
+        }
+
+        .new-reservation {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 12px 20px;
+
+            background: #8bdc28;
+            color: #080b09;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        @media(max-width: 800px) {
+
+            .reservations {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .reservations {
+                grid-template-columns: 1fr;
+            }
+
+        }
+        .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.actions a {
+    text-decoration: none;
+    padding: 9px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.accept {
+    background: #8bdc28;
+    color: #080b09;
+}
+
+.refuse {
+    background: #351414;
+    color: #ff8a8a;
+    border: 1px solid #7a2929;
+}
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            ⚽ Sport<span>Flow</span>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="back">
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+        <div class="title">
+
+            <p>SPORTFLOW</p>
+
+            <h1>
+                Mes <span>réservations</span>
+            </h1>
+
+        </div>
+
+
+        <div class="reservations">
+
+            {% for reservation in reservations %}
+
+                <div class="reservation">
+
+                    <h2>
+                        {{ reservation.terrain.nom }}
+                    </h2>
+
+                    <p>
+                        Date : {{ reservation.date }}
+                    </p>
+
+                    <p>
+                        De : {{ reservation.heure_debut }}
+                    </p>
+                    
+                    <p>
+                        À : {{ reservation.heure_fin }}
+                    </p>
+
+                    <p class="status">
+                        Statut : {{ reservation.statut }}
+                    </p>
+                    {% if user.is_staff %}
+
+<div class="actions">
+
+    <a href="{% url 'accepter_reservation' reservation.id %}" class="accept">
+        Accepter
+    </a>
+
+    <a href="{% url 'refuser_reservation' reservation.id %}" class="refuse">
+        Refuser
+    </a>
+
+</div>
+
+{% endif %}
+
+                </div>
+
+            {% empty %}
+
+                <p>
+                    Vous n'avez aucune réservation pour le moment.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+
+        <a
+            href="{% url 'terrains' %}"
+            class="new-reservation"
+        >
+            + Nouvelle réservation
+        </a>
+
+    </main>
+
+</body>
+
+</html>

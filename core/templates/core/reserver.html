@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Réserver | SportFlow</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b09;
+            color: white;
+        }
+
+        nav {
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            background: #111512;
+
+            border-bottom: 1px solid #292f2a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8bdc28;
+        }
+
+        .back {
+            color: #8bdc28;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 55px 7%;
+            max-width: 700px;
+        }
+
+        .title p {
+            color: #8bdc28;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .title h1 {
+            font-size: 35px;
+            margin-top: 10px;
+            margin-bottom: 35px;
+        }
+
+        .title span {
+            color: #8bdc28;
+        }
+
+        .form-card {
+            background: #151916;
+            border: 1px solid #292f2a;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .terrain-name {
+            color: #8bdc28;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #aaa;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 12px;
+
+            margin-bottom: 20px;
+
+            background: #080b09;
+            color: white;
+
+            border: 1px solid #292f2a;
+            border-radius: 6px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #8bdc28;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        .error {
+            background: #351414;
+
+            border: 1px solid #7a2929;
+
+            color: #ff8a8a;
+
+            padding: 12px;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 13px;
+
+            background: #8bdc28;
+
+            color: #080b09;
+
+            border: none;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <div class="logo">
+            ⚽ Sport<span>Flow</span>
+        </div>
+
+        <a href="{% url 'terrains' %}" class="back">
+            ← Terrains
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+
+        <div class="title">
+
+            <p>SPORTFLOW</p>
+
+            <h1>
+                Faire une <span>réservation</span>
+            </h1>
+
+        </div>
+
+
+        <div class="form-card">
+
+
+            <h2 class="terrain-name">
+                {{ terrain.nom }}
+            </h2>
+
+
+            {% if error %}
+
+                <div class="error">
+                    {{ error }}
+                </div>
+
+            {% endif %}
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <label>
+                    Date de réservation
+                </label>
+
+                <input
+                    type="date"
+                    name="date"
+                    required
+                >
+
+
+                <label>
+                    Heure de début
+                </label>
+
+                <input
+                    type="time"
+                    name="heure_debut"
+                    required
+                >
+
+
+                <label>
+                    Durée de réservation
+                </label>
+
+                <select
+                    name="duree"
+                    required
+                >
+
+                    <option value="">
+                        Choisir la durée
+                    </option>
+
+                    <option value="1">
+                        1 heure
+                    </option>
+
+                    <option value="2">
+                        2 heures
+                    </option>
+
+                    <option value="3">
+                        3 heures
+                    </option>
+
+                </select>
+
+
+                <button type="submit">
+                    Confirmer la réservation
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

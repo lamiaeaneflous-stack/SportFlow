@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Services | SportFlow</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b09;
+            color: white;
+        }
+
+        nav {
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            background: #111512;
+
+            border-bottom: 1px solid #292f2a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8bdc28;
+        }
+
+        .back {
+            color: #8bdc28;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .container {
+            padding: 55px 7%;
+        }
+
+        .title {
+            margin-bottom: 35px;
+        }
+
+        .title p {
+            color: #8bdc28;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .title h1 {
+            font-size: 35px;
+            margin-top: 10px;
+        }
+
+        .title span {
+            color: #8bdc28;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service {
+            background: #151916;
+            border: 1px solid #292f2a;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .service:hover {
+            border-color: #8bdc28;
+        }
+
+        .service h2 {
+            margin-bottom: 15px;
+            color: #8bdc28;
+        }
+
+        .service p {
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        @media(max-width: 800px) {
+
+            .services {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+        }
+        .service {
+    display: block;
+    text-decoration: none;
+    color: white;
+
+    background: #151916;
+    border: 1px solid #292f2a;
+    border-radius: 12px;
+    padding: 25px;
+
+    transition: 0.2s;
+}
+
+.service:hover {
+    border-color: #8bdc28;
+    transform: translateY(-3px);
+}
+
+.service h2 {
+    margin-bottom: 15px;
+    color: #8bdc28;
+}
+
+.service p {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.go {
+    color: #8bdc28;
+    font-size: 12px;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            ⚽ Sport<span>Flow</span>
+        </div>
+
+        <a href="{% url 'homa' %}" class="back">
+            ← Accueil
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+        <div class="title">
+
+            <p>SPORTFLOW</p>
+
+            <h1>
+                Nos <span>services</span>
+            </h1>
+
+        </div>
+
+
+        <div class="services">
+
+            <a href="{% url 'reservations' %}" class="service">
+        
+                <h2>
+                    Réservation
+                </h2>
+        
+                <p>
+                    Réservez facilement un terrain sportif
+                    selon vos besoins et votre disponibilité.
+                </p>
+        
+                <span class="go">
+                    Voir les réservations →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'clubs' %}" class="service">
+        
+                <h2>
+                    Gestion des clubs
+                </h2>
+        
+                <p>
+                    Consultez les différents clubs sportifs
+                    disponibles sur SportFlow.
+                </p>
+        
+                <span class="go">
+                    Voir les clubs →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'equipements' %}" class="service">
+        
+                <h2>
+                    Équipements
+                </h2>
+        
+                <p>
+                    Consultez les équipements sportifs
+                    disponibles et leurs quantités.
+                </p>
+        
+                <span class="go">
+                    Voir les équipements →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'projets' %}" class="service">
+        
+                <h2>
+                    Projets sportifs
+                </h2>
+        
+                <p>
+                    Découvrez les différents projets
+                    et activités sportives.
+                </p>
+        
+                <span class="go">
+                    Voir les projets →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'demandes' %}" class="service">
+        
+                <h2>
+                    Demandes
+                </h2>
+        
+                <p>
+                    Envoyez et suivez vos demandes
+                    directement depuis SportFlow.
+                </p>
+        
+                <span class="go">
+                    Voir mes demandes →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'statistiques' %}" class="service">
+        
+                <h2>
+                    Statistiques
+                </h2>
+        
+                <p>
+                    Consultez les statistiques générales
+                    de la plateforme SportFlow.
+                </p>
+        
+                <span class="go">
+                    Voir les statistiques →
+                </span>
+        
+            </a>
+        
+        </div>
+
+    </main>
+
+</body>
+
+</html>

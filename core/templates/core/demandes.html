@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Demandes | SportFlow</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b09;
+            color: white;
+        }
+
+        nav {
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            background: #111512;
+
+            border-bottom: 1px solid #292f2a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8bdc28;
+        }
+
+        .back {
+            color: #8bdc28;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .container {
+            padding: 55px 7%;
+        }
+
+        .title p {
+            color: #8bdc28;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .title h1 {
+            font-size: 35px;
+            margin-top: 10px;
+            margin-bottom: 35px;
+        }
+
+        .title span {
+            color: #8bdc28;
+        }
+
+        .demandes {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 20px;
+        }
+
+        .demande-card {
+            background: #151916;
+
+            border: 1px solid #292f2a;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            transition: 0.2s;
+        }
+
+        .demande-card:hover {
+            border-color: #8bdc28;
+
+            transform: translateY(-3px);
+        }
+
+        .demande-card h2 {
+            color: #8bdc28;
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+        }
+
+        .demande-card p {
+            color: #aaa;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 10px;
+        }
+
+        .demande-card strong {
+            color: white;
+        }
+
+        .status {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 6px 10px;
+
+            border-radius: 5px;
+
+            background: #202620;
+
+            color: #8bdc28 !important;
+
+            font-size: 12px !important;
+        }
+
+        .empty {
+            background: #151916;
+
+            border: 1px solid #292f2a;
+
+            border-radius: 12px;
+
+            padding: 30px;
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+        .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.actions a {
+    text-decoration: none;
+    padding: 9px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.accept {
+    background: #8bdc28;
+    color: #080b09;
+}
+
+.refuse {
+    background: #351414;
+    color: #ff8a8a;
+    border: 1px solid #7a2929;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <div class="logo">
+            ⚽ Sport<span>Flow</span>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="back">
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+
+        <div class="title">
+
+            <p>SPORTFLOW</p>
+
+            <h1>
+                Mes <span>demandes</span>
+            </h1>
+
+        </div>
+
+
+        {% if demandes %}
+
+            <div class="demandes">
+
+                {% for demande in demandes %}
+
+                    <div class="demande-card">
+
+                        <h2>
+                            {{ demande.sujet }}
+                        </h2>
+
+                        <p>
+                            <strong>Description :</strong>
+                            {{ demande.description }}
+                        </p>
+
+                        <p>
+                            <strong>Date :</strong>
+                            {{ demande.date_creation|date:"d/m/Y H:i" }}
+                        </p>
+
+                        <p class="status">
+                            Statut : {{ demande.statut }}
+                        </p>
+                        {% if user.is_staff %}
+
+<div class="actions">
+
+    <a href="{% url 'accepter_demande' demande.id %}" class="accept">
+        Accepter
+    </a>
+
+    <a href="{% url 'refuser_demande' demande.id %}" class="refuse">
+        Refuser
+    </a>
+
+</div>
+
+{% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty">
+
+                Aucune demande trouvée pour votre compte.
+
+            </div>
+
+        {% endif %}
+
+
+    </main>
+
+
+</body>
+
+</html>

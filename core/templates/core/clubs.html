@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clubs | SportFlow</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b09;
+            color: white;
+        }
+
+        nav {
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            background: #111512;
+
+            border-bottom: 1px solid #292f2a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8bdc28;
+        }
+
+        .back {
+            color: #8bdc28;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .container {
+            padding: 55px 7%;
+        }
+
+        .title {
+            margin-bottom: 35px;
+        }
+
+        .title p {
+            color: #8bdc28;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .title h1 {
+            font-size: 35px;
+            margin-top: 10px;
+        }
+
+        .title span {
+            color: #8bdc28;
+        }
+
+        .clubs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .club {
+            background: #151916;
+            border: 1px solid #292f2a;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .club:hover {
+            border-color: #8bdc28;
+        }
+
+        .club h2 {
+            margin-bottom: 15px;
+            color: #8bdc28;
+        }
+
+        .club p {
+            color: #aaa;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+
+        @media(max-width: 800px) {
+
+            .clubs {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .clubs {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            ⚽ Sport<span>Flow</span>
+        </div>
+
+        <a href="{% url 'homa' %}" class="back">
+            ← Accueil
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+        <div class="title">
+
+            <p>SPORTFLOW</p>
+
+            <h1>
+                Nos <span>clubs sportifs</span>
+            </h1>
+
+        </div>
+
+
+        <div class="clubs">
+
+            {% for club in clubs %}
+
+                <div class="club">
+
+                    <h2>{{ club.nom }}</h2>
+
+                    <p>
+                        Sport : {{ club.sport }}
+                    </p>
+
+                    <p>
+                        Ville : {{ club.ville }}
+                    </p>
+
+                    {% if club.description %}
+
+                        <p class="description">
+                            {{ club.description }}
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+            {% empty %}
+
+                <p>
+                    Aucun club disponible pour le moment.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

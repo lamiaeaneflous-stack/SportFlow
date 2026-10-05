@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inscription | SportFlow</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.88)),
+                url("https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1600&q=80")
+                center / cover;
+        }
+
+        .register-box {
+
+            width: 420px;
+
+            padding: 40px;
+
+            background: #111512;
+
+            border: 1px solid #303730;
+
+            border-radius: 14px;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,.5);
+        }
+
+        .logo {
+
+            text-align: center;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: white;
+
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: #8bdc28;
+        }
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #929992;
+
+            font-size: 13px;
+
+            margin-bottom: 30px;
+        }
+
+        label {
+
+            display: block;
+
+            color: #ddd;
+
+            font-size: 12px;
+
+            margin-bottom: 8px;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: #1b201c;
+
+            border: 1px solid #343b35;
+
+            border-radius: 7px;
+
+            color: white;
+
+            outline: none;
+
+            margin-bottom: 17px;
+        }
+
+        input:focus {
+            border-color: #8bdc28;
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #8bdc28;
+
+            color: #10150b;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: white;
+        }
+
+        .error {
+
+            background: #3b1717;
+
+            color: #ff9b9b;
+
+            padding: 10px;
+
+            border-radius: 6px;
+
+            font-size: 12px;
+
+            margin-bottom: 18px;
+        }
+
+        .login {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #999;
+
+            font-size: 12px;
+        }
+
+        .login a {
+
+            color: #8bdc28;
+
+            text-decoration: none;
+        }
+
+        .back {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #999;
+
+            font-size: 12px;
+
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="register-box">
+
+        <div class="logo">
+            ⚽ Sport<span>Flow</span>
+        </div>
+
+        <div class="subtitle">
+            Créez votre compte SportFlow
+        </div>
+
+        {% if error %}
+
+            <div class="error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label>Nom utilisateur</label>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Ex: lamyaa"
+                required
+            >
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="exemple@email.com"
+                required
+            >
+
+            <label>Mot de passe</label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Votre mot de passe"
+                required
+            >
+
+            <label>Confirmer le mot de passe</label>
+
+            <input
+                type="password"
+                name="password2"
+                placeholder="Confirmer le mot de passe"
+                required
+            >
+
+            <button type="submit">
+                Créer mon compte
+            </button>
+
+        </form>
+
+        <div class="login">
+
+            Vous avez déjà un compte ?
+
+            <a href="{% url 'login' %}">
+                Se connecter
+            </a>
+
+        </div>
+
+        <a href="{% url 'homa' %}" class="back">
+            ← Retour à l'accueil
+        </a>
+
+    </div>
+
+</body>
+
+</html>

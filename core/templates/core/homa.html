@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportFlow | Le sport autrement</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #080b09;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        :root {
+            --green: #8bdc28;
+            --dark: #080b09;
+            --card: #151916;
+            --gray: #a5ada6;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 80px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #080b09;
+            border-bottom: 1px solid #252a26;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            font-size: 12px;
+            color: #ddd;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: var(--green);
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            background: var(--green);
+            color: #10150b;
+            font-size: 12px;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 540px;
+            padding: 90px 7%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(90deg, #080b09 5%, rgba(8,11,9,.91) 35%,
+                rgba(8,11,9,.25) 100%),
+                url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1800&q=85")
+                center 45% / cover no-repeat;
+        }
+        .service {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: #151916;
+    border: 1px solid #292f2a;
+    border-radius: 12px;
+    padding: 25px;
+    transition: 0.2s;
+}
+
+.service:hover {
+    border-color: #8bdc28;
+    transform: translateY(-3px);
+}
+
+.service h3 {
+    color: white;
+    margin-bottom: 12px;
+}
+
+.service p {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.service-icon {
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.service-link {
+    color: #8bdc28;
+    font-size: 12px;
+    font-weight: bold;
+}
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 66px);
+            line-height: 1.08;
+            font-weight: 800;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            color: #d1d5d2;
+            line-height: 1.9;
+            max-width: 480px;
+            font-size: 14px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn-outline {
+            border: 1px solid #737b74;
+            background: transparent;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            color: #111;
+        }
+
+        /* STATISTICS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin: -1px 7% 65px;
+            background: #151916;
+            border: 1px solid #292f2a;
+            border-radius: 12px;
+            padding: 27px 15px;
+            text-align: center;
+        }
+
+        .stat {
+            border-right: 1px solid #333a34;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat h2 {
+            color: var(--green);
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .stat p {
+            color: var(--gray);
+            font-size: 11px;
+        }
+
+        /* GENERAL SECTIONS */
+
+        .section {
+            padding: 0 7% 75px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 27px;
+        }
+
+        .section-header h2 {
+            font-size: 27px;
+            margin-top: 8px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .text-link {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* FEATURED PROJECT */
+
+        .featured {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            border: 1px solid #292f2a;
+            background: var(--card);
+            border-radius: 13px;
+        }
+
+        .featured-image {
+            min-height: 300px;
+            background:
+                linear-gradient(0deg, rgba(0,0,0,.35), transparent),
+                url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1000&q=80")
+                center / cover;
+        }
+
+        .featured-info {
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-info h3 {
+            font-size: 25px;
+            margin: 15px 0;
+        }
+
+        .featured-info p {
+            color: var(--gray);
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px;
+            color: #d1d5d2;
+            font-size: 11px;
+            margin-bottom: 25px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid #292f2a;
+            border-radius: 11px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--green);
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 175px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .image-one {
+            background-image: url("https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=700&q=80");
+        }
+
+        .image-two {
+            background-image: url("https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&w=700&q=80");
+        }
+
+        .image-three {
+            background-image: url("https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=700&q=80");
+        }
+
+        .card-body {
+            padding: 21px;
+        }
+
+        .card-label {
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin: 12px 0;
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 12px;
+            line-height: 1.8;
+            margin-bottom: 17px;
+        }
+
+        .card-footer {
+            border-top: 1px solid #303630;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-footer span {
+            color: #c3c9c4;
+            font-size: 10px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .service {
+            background: #121713;
+            border: 1px solid #252b26;
+            padding: 28px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            border-color: var(--green);
+        }
+
+        .service-icon {
+            width: 47px;
+            height: 47px;
+            display: grid;
+            place-items: center;
+            background: #263b20;
+            color: var(--green);
+            border-radius: 10px;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .service p {
+            color: var(--gray);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* BANNER */
+
+        .banner {
+            margin: 0 7% 75px;
+            padding: 50px;
+            border-radius: 13px;
+            background:
+                linear-gradient(90deg, rgba(5,12,6,.97), rgba(5,12,6,.45)),
+                url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1500&q=80")
+                center / cover;
+            border: 1px solid #34472e;
+        }
+
+        .banner h2 {
+            font-size: 30px;
+            margin: 13px 0;
+        }
+
+        .banner p {
+            color: #d0d6d0;
+            max-width: 470px;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 23px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 45px 7% 25px;
+            background: #111512;
+            border-top: 1px solid #282e29;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        .footer-about p {
+            color: var(--gray);
+            font-size: 12px;
+            line-height: 1.9;
+            margin-top: 15px;
+            max-width: 300px;
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: var(--gray);
+            font-size: 11px;
+            margin-bottom: 13px;
+        }
+
+        .footer-column a:hover {
+            color: var(--green);
+        }
+
+        .copyright {
+            border-top: 1px solid #303630;
+            margin-top: 35px;
+            padding-top: 22px;
+            text-align: center;
+            color: #828a83;
+            font-size: 10px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 18px 5%;
+                height: auto;
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .menu {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .menu a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 75px 5%;
+            }
+
+            .stats {
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+
+            .section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .banner {
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                justify-content: center;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 13px;
+            }
+
+            .menu a {
+                font-size: 10px;
+            }
+
+            .navbar > .btn {
+                margin: auto;
+            }
+
+            .hero {
+                min-height: 480px;
+                background-position: 58% center;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+            }
+
+            .hero p {
+                font-size: 12px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px 0;
+                padding: 25px 10px;
+            }
+
+            .stat:nth-child(2) {
+                border-right: none;
+            }
+
+            .stat h2 {
+                font-size: 25px;
+            }
+
+            .section-header {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .section-header h2 {
+                font-size: 22px;
+            }
+
+            .featured {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                min-height: 210px;
+            }
+
+            .featured-info {
+                padding: 25px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card-image {
+                height: 210px;
+            }
+
+            .services {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .service {
+                padding: 18px 13px;
+            }
+
+            .service h3 {
+                font-size: 12px;
+            }
+
+            .banner {
+                padding: 30px 22px;
+            }
+
+            .banner h2 {
+                font-size: 24px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <a href="{% url 'homa' %}" class="logo">
+            ⚽ Sport<span>Flow</span>
+        </a>
+
+        <div class="menu">
+
+            <a href="{% url 'homa' %}">Accueil</a>
+
+            <a href="{% url 'clubs' %}">
+                Clubs
+            </a>
+
+            <a href="{% url 'terrains' %}">
+                Terrains
+            </a>
+
+            <a href="{% url 'projets' %}">
+                Projets
+            </a>
+
+            <a href="{% url 'services' %}">
+                Services
+            </a>
+
+        </div>
+
+        <a href="{% url 'login' %}" class="btn">
+            Connexion ↗
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="accueil">
+
+        <div class="hero-content">
+
+            <span class="tag">
+                BIENVENUE SUR SPORTFLOW
+            </span>
+
+            <h1>
+                VIVEZ LE SPORT.<br>
+                GÉREZ <span>VOS PROJETS.</span>
+            </h1>
+
+            <p>
+                La plateforme qui simplifie la gestion des clubs,
+                des terrains, des réservations et des événements sportifs.
+                Tout le sport, au même endroit.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'projets' %}" class="btn">
+                    Découvrir les projets →
+                </a>
+
+                <a href="{% url 'services' %}" class="btn btn-outline">
+                    Nos services
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <h2>120+</h2>
+            <p>Clubs sportifs</p>
+        </div>
+
+        <div class="stat">
+            <h2>500+</h2>
+            <p>Réservations</p>
+        </div>
+
+        <div class="stat">
+            <h2>80+</h2>
+            <p>Projets sportifs</p>
+        </div>
+
+        <div class="stat">
+            <h2>98%</h2>
+            <p>Satisfaction</p>
+        </div>
+
+    </div>
+
+
+    <!-- FEATURED PROJECT -->
+
+    <section class="section" id="clubs">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="tag">
+                    À LA UNE
+                </span>
+
+                <h2>
+                    Le sport nous rassemble
+                </h2>
+
+                <p>
+                    Découvrez les activités et projets du moment.
+                </p>
+
+            </div>
+
+            <a href="{% url 'projets' %}" class="text-link">
+                Voir tous les projets →
+            </a>
+
+        </div>
+
+
+        <div class="featured">
+
+            <div class="featured-image"></div>
+
+            <div class="featured-info">
+
+                <span class="tag">
+                    PROJET À LA UNE
+                </span>
+
+                <h3>
+                    Tournoi Football 2026
+                </h3>
+
+                <p>
+                    Participez à un événement sportif exceptionnel.
+                    Retrouvez les équipes, consultez le programme
+                    et préparez-vous à vivre chaque moment du match.
+                </p>
+
+                <div class="details">
+
+                    <span>
+                        📅 Octobre 2026
+                    </span>
+
+                    <span>
+                        📍 Casablanca
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <a href="{% url 'projets' %}" class="btn">
+                        Voir les détails →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section class="section" id="projets">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="tag">
+                    DÉCOUVREZ SPORTFLOW
+                </span>
+
+                <h2>
+                    Nos projets sportifs
+                </h2>
+
+                <p>
+                    Des expériences sportives pour tous les passionnés.
+                </p>
+
+            </div>
+
+            <a href="{% url 'projets' %}" class="text-link">
+                Explorer →
+            </a>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="card">
+
+                <div class="card-image image-one"></div>
+
+                <div class="card-body">
+
+                    <span class="card-label">
+                        COMPÉTITION
+                    </span>
+
+                    <h3>
+                        Tournoi de football
+                    </h3>
+
+                    <p>
+                        Organisez vos matchs, gérez les équipes
+                        et suivez le programme du tournoi.
+                    </p>
+
+                    <div class="card-footer">
+
+                        <span>
+                            📅 10 Octobre 2026
+                        </span>
+
+                        <a href="{% url 'projets' %}" class="text-link">
+                            Découvrir →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="card">
+
+                <div class="card-image image-two"></div>
+
+                <div class="card-body">
+
+                    <span class="card-label">
+                        RÉSERVATION
+                    </span>
+
+                    <h3>
+                        Terrains sportifs
+                    </h3>
+
+                    <p>
+                        Consultez les terrains disponibles et
+                        organisez vos séances sportives.
+                    </p>
+
+                    <div class="card-footer">
+
+                        <span>
+                            📍 Casablanca
+                        </span>
+
+                        <a href="{% url 'reservations' %}" class="text-link">
+                            Réserver →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="card">
+
+                <div class="card-image image-three"></div>
+
+                <div class="card-body">
+
+                    <span class="card-label">
+                        COMMUNAUTÉ
+                    </span>
+
+                    <h3>
+                        Événements sportifs
+                    </h3>
+
+                    <p>
+                        Découvrez les événements, rejoignez les
+                        activités et partagez votre passion.
+                    </p>
+
+                    <div class="card-footer">
+
+                        <span>
+                            ⚽ Tous les sports
+                        </span>
+
+                        <a href="{% url 'projets' %}" class="text-link">
+                            Participer →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section class="section" id="services">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="tag">
+                    NOS SOLUTIONS
+                </span>
+
+                <h2>
+                    Tout pour votre activité sportive
+                </h2>
+
+                <p>
+                    Une plateforme pensée pour simplifier votre organisation.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="services">
+
+
+            <a href="{% url 'clubs' %}" class="service">
+        
+                <div class="service-icon">
+                    ⚽
+                </div>
+        
+                <h3>
+                    Gestion des clubs
+                </h3>
+        
+                <p>
+                    Organisez les équipes, les membres et les activités.
+                </p>
+        
+                <span class="service-link">
+                    Voir les clubs →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'reservations' %}" class="service">
+        
+                <div class="service-icon">
+                    📅
+                </div>
+        
+                <h3>
+                    Réservations
+                </h3>
+        
+                <p>
+                    Consultez les disponibilités et gérez les réservations.
+                </p>
+        
+                <span class="service-link">
+                    Voir les réservations →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'equipements' %}" class="service">
+        
+                <div class="service-icon">
+                    🎽
+                </div>
+        
+                <h3>
+                    Équipements
+                </h3>
+        
+                <p>
+                    Suivez le matériel et gérez les équipements sportifs.
+                </p>
+        
+                <span class="service-link">
+                    Voir les équipements →
+                </span>
+        
+            </a>
+        
+        
+            <a href="{% url 'statistiques' %}" class="service">
+        
+                <div class="service-icon">
+                    📊
+                </div>
+        
+                <h3>
+                    Statistiques
+                </h3>
+        
+                <p>
+                    Consultez les chiffres et suivez vos projets sportifs.
+                </p>
+        
+                <span class="service-link">
+                    Voir les statistiques →
+                </span>
+        
+            </a>
+        
+        
+        </div>
+
+    </section>
+
+
+    <!-- COMMUNITY BANNER -->
+
+    <section class="banner" id="contact">
+
+        <span class="tag">
+            REJOIGNEZ SPORTFLOW
+        </span>
+
+        <h2>
+            Votre passion.<br>
+            Votre équipe. Votre sport.
+        </h2>
+
+        <p>
+            Créez votre espace, découvrez les projets sportifs
+            et préparez vos prochaines activités avec SportFlow.
+        </p>
+
+        <a href="{% url 'inscription' %}" class="btn">
+            Créer un compte →
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div class="footer-about">
+
+                <a href="{% url 'homa' %}" class="logo">
+                    ⚽ Sport<span>Flow</span>
+                </a>
+
+                <p>
+                    Votre plateforme de gestion sportive.
+                    Clubs, terrains, réservations et projets
+                    réunis dans un seul espace.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Navigation
+                </h4>
+
+                <a href="{% url 'homa' %}">
+                    Accueil
+                </a>
+
+                <a href="{% url 'clubs' %}">
+                    Clubs
+                </a>
+
+                <a href="{% url 'terrains' %}">
+                    Terrains
+                </a>
+
+                <a href="{% url 'projets' %}">
+                    Projets
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Nos services
+                </h4>
+
+                <a href="{% url 'reservations' %}">
+                    Réservations
+                </a>
+
+                <a href="{% url 'equipements' %}">
+                    Équipements
+                </a>
+
+                <a href="{% url 'projets' %}">
+                    Événements
+                </a>
+
+                <a href="{% url 'statistiques' %}">
+                    Statistiques
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Compte
+                </h4>
+
+                <a href="{% url 'login' %}">
+                    Connexion
+                </a>
+
+                <a href="{% url 'inscription' %}">
+                    Créer un compte
+                </a>
+
+                <a href="{% url 'dashboard' %}">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'demandes' %}">
+                    Mes demandes
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 SportFlow — Tous droits réservés.
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
